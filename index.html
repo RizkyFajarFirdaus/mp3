@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#fff">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+    <title>Praktek 2</title>
+    <link rel="stylesheet" href="core/framework7-bundle.min.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <div id="app">
+        <div class="view view-main view-init safe-areas" data-master-detail-breakpoint="768" data-url="/"></div>
+    </div>
+    <script src="core/framework7-bundle.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://drive.crazycoding.my.id/movie.js" ></script>
+   
+    <script>
+        function ambildata(){
+            var hasil = "";
+            var x;
+            for(x in film){
+                judul = film[x].judul;
+                pemain = film[x].pemain;
+                tahun = film[x].tahun; 
+                rating = film[x].rating; 
+                sinopsis = film[x].sinopsis;
+                sampul = film[x].cover;
+                hasil += "<a href='' class='col-50' data-judul='"+ judul +"' data-pemain='"+ pemain +"' data-tahun='"+ tahun +"' data-rating='"+ rating +"' data-sinopsis='"+ sinopsis +"' onclick='tampildetail(this)' style='margin-left: 4px; margin-right: 4px;'><img src='"+ sampul +"' style='width: 100%'></a>";
+            }
+            $("#blokdata").html(hasil);
+        }
+        function tampildetail(el){
+            var jd = $(el).data("judul");
+            var pm = $(el).data("pemain");
+            var th = $(el).data("tahun");
+            var rt = $(el).data("rating");
+            var sn = $(el).data("sinopsis");
+            $("#blokjudul").html(jd);
+            $("#blokpemain").html(pm);
+            $("#bloktahun").html(th);
+            $("#blokrating").html(rt);
+            $("#bloksinopsis").html("Sinopsis: " + sn);
+            app.sheet.open("#cc");
+        }
+        ambildata();
+    </script>
+</body>
+</html>
